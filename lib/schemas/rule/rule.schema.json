@@ -1,0 +1,47 @@
+{
+  "$id": "rule.schema.json",
+  "definitions": {
+    "rule":{
+      "type": "object",
+      "title": "the description of a rule",
+      "properties": {
+        "ruleTag": {
+          "type": "string",
+          "title": "the rule identifier. Multiple rule tags should be comma separated"
+        },
+        "conditions": {
+          "oneOf": [
+            {
+              "$ref": "conditions.schema.json#/definitions/conditions"
+            },
+            {
+              "$ref": "condition.schema.json#/definitions/condition"
+            }
+          ]
+        },
+        "status": {
+          "type": "string",
+          "title": "The status of the rule, which can be public/draft",
+          "enum": ["public", "draft"],
+          "default": "draft"
+        },
+        "type": {
+          "type": "string",
+          "title": "Rule type, e.g eligibility type"
+        },
+        "overall": {
+          "type": "boolean",
+          "title": "if true then the result includes the condition, otherwise it excludes the condition"
+        }
+      },
+      "required": [
+        "ruleTag",
+        "conditions",
+        "status",
+        "type",
+        "overall"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

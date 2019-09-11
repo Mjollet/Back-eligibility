@@ -1,0 +1,49 @@
+{
+  "$id": "global-eligibility.schema.json",
+  "type": "object",
+  "properties": {
+    "store": {
+      "$ref": "store.schema.json#/definitions/store"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country code"
+    },
+    "vehicle": {
+      "$ref": "vehicle.schema.json#/definitions/vehicle"
+    },
+    "customer": {
+      "$ref": "customer.schema.json#/definitions/customer"
+    },
+    "bundles": {
+      "type": "array",
+      "title": "list of bundles",
+      "items": {
+        "$ref": "bundle.schema.json#/definitions/bundle"
+      }
+    },
+    "products": {
+      "type": "array",
+      "title": "list of commercial services to assess",
+      "items": {
+        "$ref": "product.schema.json#/definitions/product"
+      }
+    },
+    "functionalities": {
+      "type": "array",
+      "title": "list of service functionalities to assess",
+      "items": {
+        "$ref": "functionality.schema.json#/definitions/functionality"
+      }
+    },
+    "offers": {
+      "type": "array",
+      "title": "list of offers to assess",
+      "items": {
+        "$ref": "offer.schema.json#/definitions/offer"
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": true
+}

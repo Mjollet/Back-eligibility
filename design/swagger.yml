@@ -1,0 +1,1020 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: SAMS - Eligibility Component
+  description: >-
+    Provides a set of services in order to handle business/technical rules around bundles, products and services functionalities
+  contact:
+    email: sams-team@fr.ibm.com
+  license:
+    name: TBD
+    url: 'https://'
+host: newxqaxzyb.execute-api.eu-west-1.amazonaws.com
+basePath: /staging
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /global/eligibility/{workflow}/{level}:
+    post:
+      tags:
+        - Eligibility Orchestration
+      summary: main service to asses eligibility
+      description: >-
+        Returns the assessment (commercial and/or technical and/or other type) for a set of bundles or products, service functionalities, or offers depending on the level set
+      parameters:
+        - in: path
+          name: workflow
+          description: >-
+            If flow is global then the service will assess the list of bundles or products running both technical and commercial eligibility in parallel.
+              If flow is commercial, then only commercial eligibility will be assessed.
+              If flow is technical, then only technical eligibility will be assessed.
+          required: true
+          schema:
+            type: string
+            enum:
+              - global
+              - technical
+              - commercial
+        - in: path
+          name: level
+          description: >-
+            The level of the service to assess, e.g.
+              AssessBundles, AssessProducts, for global flow
+              AssessBundles, AssessProducts, AssessOffers for commercial flow
+              AssessMuse, AssessFunctionalities, AssessProducts, AssessBundles for technical workflow
+          required: true
+          schema:
+            type: string
+            enum:
+              - AssessBundles
+              - AssessProducts
+              - AssessFunctionalities
+              - AssessOffers
+        - in: body
+          name: body
+          description: json object containing the list of bundles, products, offers or service functionalities to assess depending on the level
+          required: true
+          schema:
+            $ref: '#/definitions/globalEligibilityInput'
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            oneOf:
+              - $ref: '#/definitions/globalEligibilityOutputBundle'
+              - $ref: '#/definitions/globalEligibilityOutputProducts'
+              - $ref: '#/definitions/globalEligibilityOutputFunctionalities'
+              - $ref: '#/definitions/globalEligibilityOutputOffers'
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                enum:
+                  - "Bad Request"
+        '500':
+          description: Internal Server Error
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                enum:
+                  - "Invalid service level"
+
+  /eligibility/commercial/{level}:
+    post:
+      tags:
+        - Commercial eligibility
+      summary: service to assess an atomic commercial eligiblity
+      description: >-
+        Returns the assessment of an atomic eligiblity (commercial) for the list of products or offers
+      parameters:
+        - in: path
+          name: level
+          required: true
+          description: the level which describes the type of subjects to be assessed e.g. AssessProducts or AssessOffers
+          schema:
+            type: string
+            enum:
+              - "AssessProducts"
+              - "AssessOffers"
+        - in: body
+          name: body
+          required: true
+          description: >-
+            json object containing the list of subjects (products or offers) to be assessed
+          schema:
+            $ref: '#/definitions/genericEligibilityInput'
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/genericEligibilityOuput'
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                enum: "Schema validation error"
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                enum:
+                  - "Bad Request"
+          
+  /eligibility/technical/AssessMuse:
+    post:
+      tags:
+        - Technical eligibility
+      summary: service to assess an atomic technical eligiblity
+      description: >-
+        Returns the assessment of an atomic eligiblity (technical) for the list of service functionalities
+      parameters:
+        - in: path
+          name: level
+          required: true
+          description: the level of eligibility to assess, e.g. AssessMuse
+          schema:
+            type: string
+            enum:
+              - AssessMuse
+        - in: body
+          name: body
+          required: true
+          description: >-
+            json object containing the list of functionalities to be assessed
+          schema:
+            $ref: '#/definitions/technicalEligibilityInput'
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/technicalEligibilityOuput'
+
+  /rule/{type}/add:
+    post:
+      tags:
+        - Rules management
+      summary: Add rules by type
+      description: >-
+        saves rules (eligiblity rules) of a product or service functionalities
+      parameters:
+        - in: path
+          name: type
+          required: true
+          description: the type of the rule (commerical, technical or other)
+          schema:
+            type: string
+        - in: body
+          name: rules
+          description: json object containing store, user information, vehicle information and the services to assess depending on the level and type of eligibility
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/rule'
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                enum:
+                  - success
+        '405':
+          description: Invalid input
+
+  /rule/all:
+    get:
+      tags:
+        - Rules management
+      summary: retrieve all the rules
+      description: >-
+        returns the set of registered rules
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              rules:
+                type: array
+                items:
+                  $ref: '#/definitions/rule'
+
+  /rule/{type}/all:
+    get:
+      tags:
+        - Rules management
+      summary: retrieve all the rules of the given type
+      description: >-
+        returns the set of registered rules
+      parameters:
+        - in: path
+          name: type
+          required: true
+          description: the type of the rule (commerical, technical or other)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              rules:
+                type: array
+                items:
+                  $ref: '#/definitions/rule'
+
+  /rule/{type}/drop:
+    post:
+      tags:
+        - Rules management
+      summary: removes the rule with the given type and service id
+      description: >-
+        removes the rule with the given type and service id
+      parameters:
+        - in: path
+          name: type
+          required: true
+          description: the type of the rule (commercial, technical or other)
+          schema:
+            type: string
+            example: commercial
+        - in: body
+          name: ruleTag
+          required: true
+          description: the rule tag (product or service functionality) linked to the rule
+          schema:
+            type: string
+            example: customer_from_france
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                enum:
+                  - success
+        '405':
+          description: Invalid input
+
+  /dictionary/entry/add:
+    post:
+      tags:
+        - Dictionary management
+      summary: saves a new entry in the dictionary
+      description: >-
+        saves a new entry in the dictionary in order to enrich the rules labels
+      parameters:
+        - in: body
+          name: definitions
+          required: true
+          description: the set of new definitions (dictionary entry) to save
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/dictionaryEntry'
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                enum:
+                  - success
+        '405':
+          description: Invalid input
+
+  /dictionary/entry/all:
+    get:
+      tags:
+        - Dictionary management
+      summary: retrieves all the definitions from the dictionary
+      description: >-
+        retrieves all the definitions available in the dictionary
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              definitions:
+                type: array
+                items:
+                  $ref: '#/definitions/dictionaryEntry'
+        '405':
+          description: Invalid input
+
+  /dictionary/entry/drop:
+    post:
+      tags:
+        - Dictionary management
+      summary: removes a dictionary entry (definition)
+      description: >-
+        removes the definition with the given label and category
+      parameters:
+        - in: body
+          name: label
+          required: true
+          description: the definition's label
+          schema:
+            type: string
+            example: The customer's country of residence
+        - in: body
+          name: category
+          required: true
+          description: the definition's category, e.g. the elibility type corresponding to the definition
+          schema:
+            type: string
+            example: technical
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                enum:
+                  - success
+        '405':
+          description: Invalid input
+
+
+
+
+definitions:
+  store:
+    type: object
+    properties:
+      channel:
+        type: string
+        title: communication channel
+        description: communication channel, e.g. Mobile App, Web App ...
+        example: WEB
+      location:
+        type: string
+        title: the country of residence
+        description: the country of residence
+        example: FR
+      level:
+        type: string
+        title: Response level
+        description: Response level, in order to get more or less details about what happened and the rules that has been executed to asseess
+        enum:
+          - info
+          - debug
+      origin:
+        type: string
+        title: The brand of the web site
+        description: Identify the BRAND of the site (map to the orchestration sequence). Allows to forbid request for a brand from an other Brand Site - Requestion a Peugeot from a DS Site
+        enum:
+          - ds
+          - DS
+          - peugeot
+          - Peugeot
+          - citroen
+          - citroën
+          - Citroen
+          - Citroën
+          - opel
+          - Opel
+          - vauxhall
+          - Vauxhall
+      audience:
+        type: string
+        title: B2B or B2C
+        description: B2B or B2C
+        enum:
+          - B2B
+          - B2C
+    required:
+      - origin
+      - audience
+    additionalProperties: true
+
+  customer:
+    type: object
+    properties:
+      uuid:
+        type: string
+        title: unique id of the user
+        description: the unique id of the user
+        example: FGGEAE213
+      countryofresidence:
+        type: string
+        title: The customer's country of residence
+        description: The customer's country of residence
+        example: FR
+      mktsegment:
+        type: string
+        title: Marketing Segment
+        description: Marketing Segment
+        example: premium
+      language:
+        type: string
+        title: Customer's preferred language
+        description: Customer's preferred language
+        example: fr_FR
+      subscribedProducts:
+        type: object
+        items:
+          $ref: '#/definitions/subscribedProducts'
+      required:
+      - language
+      - countryofresidence
+      additionalProperties: false
+
+  subscribedProducts:
+    type: object
+    properties:
+      historicalSubscriptions:
+        type: array
+        items:
+          $ref: '#/definitions/Subscriptions'
+      activatedSubscriptions:
+        type: array
+        items:
+          $ref: '#/definitions/Subscriptions'
+      pendingSubscriptions:
+        type: array
+        items:
+          $ref: '#/definitions/Subscriptions'
+    required:
+    - historicalSubscriptions
+    - activatedSubscriptions
+    - pendingSubscriptions
+    additionalProperties: false
+
+  Subscriptions:
+    type: object
+    properties:
+      VIN:
+        type: string
+        title: vin of the vehicle
+        pattern: ^(VF|VR)[\\dA-Za-z]{15}$
+        example: VF393T2F12341F1R2
+      subscriptionStatus:
+        type: string
+        title: Status of the subscription
+        example: Activated
+      subscriptionStartDate:
+        type: string
+        title: Start date of the subscription
+        example: '2018-05-07'
+      subscriptionEndDate:
+        type: string
+        title: End date of the subscription
+        example: '2019-05-07'
+      remainingDays:
+        type: string
+        title: Days remaining before subscription end
+        example: 174
+      idSubscription:
+        type: string
+        title: ID of the subscription
+        example: 8adc8f9966c8c79b0166ee3bdbbe6824
+      idRatePlan:
+        type: string
+        title: ID of the subscription's rate plan
+        example: 8adce421607274b9016078497faa1d0e
+      idProduct:
+        type: string
+        title: ID of the product
+        example: 8adc8f9966534047016663dffb7f1e98
+
+  vehicle:
+    type: object
+    properties:
+      wmi:
+        type: string
+        description: >-
+          World Manufacturer Identifier Number (WMI) Uniquely identify the
+          manufacturer of the vehicle - Digits 1-3 of the VIN
+        example: VF7
+      vds:
+        type: string
+        description: ' Vehicle Descriptor Section (VDS)-Identify the vehicle type and may include information on the platform used, the model, and the body style -Digits 4-9 digits of the VIN'
+        example: E0F2JE
+      vis:
+        type: string
+        description: ' Vehicle Indicator Section (VIS) used by the manufacturer to identify the individual vehicle -Digits 10-17 digits of the VIN'
+        example: A0OJ3KLE
+      brand:
+        type: string
+        description: Brand of the vehicle (DS/PEUGEOT/CITROEN/OPELVAUXHALL
+        example: DS
+      range:
+        type: string
+        description: The family range of the vehicle
+        example: DS7
+    required:
+      - wmi
+      - vds
+      - vis
+    additionalProperties: true
+
+  functionality:
+    type: object
+    properties:
+      ruleTag:
+        type: string
+        description: the rule identifier
+      PSAFeatureCode:
+        type: string
+        description: the identification code of the functionality. example NAL01, NAX01 ...
+        example: NAL01
+      name:
+        type: string
+        description: the service functionality name
+        example: Connected Navigation
+    required:
+      - PSAFeatureCode
+    additionalProperties: true
+
+  product:
+    type: object
+    properties:
+      ruleTag:
+        type: string
+        description: the rule identifier
+      id:
+        type: string
+        description: the technical id of the product
+        example: 8adc8f99617598b80161b91c146e53d4
+      SKU:
+        type: string
+        description: the functional id of the product
+        example: SKU-00000005-FR-DS-B2C
+      functionalities:
+        type: array
+        description: a set of the included functionalities in the product
+        items:
+          $ref: '#/definitions/functionality'
+    required:
+      - id
+      - SKU
+      - functionalities
+      - ruleTag
+    additionalProperties: false
+
+  bundle:
+    type: object
+    properties:
+      ruleTag:
+        type: string
+        description: the rule identifier
+      id:
+        type: string
+        description: the technical id of the bundle
+        example: 8adc8f99617598b80161b91c146e53d4
+      SKU:
+        type: string
+        description: the functional id of the bundle
+        example: SKU-00000005-FR-DS-B2C
+      products:
+        type: array
+        description: a set of the included commerical services in the bundle
+        items:
+          $ref: '#/definitions/product'
+    required:
+      - id
+      - SKU
+      - products
+      - ruleTag
+    additionalProperties: false
+    
+  offer:
+    type: object
+    properties:
+      id:
+        type: string
+        description: the technical id of the rate plan
+      ruleTag:
+        type: string
+        description: the rule identifier
+    required:
+      - id
+
+  dictionaryEntry:
+    type: object
+    properties:
+      label:
+        type: string
+        description: the parameter's label
+        example: The customer's country of residence
+      symbol:
+        type: string
+        description: technical segnification of the label -> a json path to the property referred to as the label with $ as the root object (request body)
+        example: $.customer.countryofresidence
+      type:
+        type: string
+        description: the type of the label or the property referred to
+        enum:
+          - string
+          - object
+          - array
+          - objectArray
+        example: string
+      category:
+        type: string
+        description: the category of dictionary entry corresponding to the eligibility type, e.g. the type of rule for which this definition (dictionary entry) will be used for (commercial or technical ...)
+        example: commercial
+    required:
+      - label
+      - symbol
+      - type
+      - category
+    additionalProperties: false
+
+  condition:
+    type: object
+    title: simple condition (unitary)
+    properties:
+      label:
+        type: string
+        description: the parameter's label, e.g. should correspond to a registered dictionary entry label
+        example: The customer's country of residence
+      operator:
+        type: string
+        description: logical operator, e.g. === | < | > ...
+        enum :
+          - ===
+          - \<
+          - \>
+          - \<=
+          - \>=
+          - \!==
+          - includes
+          - excludes
+          - contains
+          - not_contains
+        example: ===
+      value:
+        type: string
+        description: the value to compare with
+        example: FR
+    required:
+      - label
+      - operator
+      - value
+    additionalProperties: false
+
+  conditions:
+    type: object
+    title: Nested conditions (set of conditions)
+    properties:
+      conditions:
+        type: array
+        description: The set of conditions
+        items:
+          oneOf:
+            - $ref: '#/definitions/conditions'
+            - $ref: '#/definitions/condition'
+      operator:
+        type: string
+        description: Logical operator used to compare nested conditions, e.g. && ||
+        enum:
+          - \|\|
+          - \&\&
+        example: &&
+    required:
+      - conditions
+      - operator
+    additionalProperties: false
+
+  rule:
+    type: object
+    properties:
+      ruleTag:
+        type: string
+        description: the rule identifier
+      conditions:
+        oneOf:
+          - $ref: '#/definitions/conditions'
+          - $ref: '#/definitions/condition'
+      status:
+        type: string
+        description: The status of the rule, which can be public/draft. if public then the rule will be used when the global eligibility is called otherwise no
+        enum:
+          - draft
+          - public
+        default: draft
+        example: public
+      type:
+        type: string
+        description: Rule type, e.g. eligibility type (commercial, technical ...)
+        example: commercial
+      overall:
+        type: boolean
+        description: if true then the result includes the condition, otherwise it excludes the condition
+        example: true
+    required:
+      - serviceId
+      - conditions
+      - status
+      - type
+      - overall
+      - ruleTag
+    additionalProperties: false
+
+  genericEligibilityInput:
+    type: object
+    properties:
+      store:
+        $ref: '#/definitions/store'
+      country:
+        type: string
+        description: Country code
+      customer:
+        $ref: '#/definitions/customer'
+      vehicle:
+        $ref: '#/definitions/vehicle'
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/product'
+      functionality:
+          $ref: '#/definitions/functionality'
+      offers:
+        type: array
+        items:
+          $ref: '#/definitions/offer'
+    required:
+      - store
+    additionalProperties: false
+    
+  technicalEligibilityInput:
+    type: object
+    properties:
+      store:
+        $ref: '#/definitions/store'
+      country:
+        type: string
+        description: Country code
+      customer:
+        $ref: '#/definitions/customer'
+      vehicle:
+        $ref: '#/definitions/vehicle'
+      functionalities:
+        type: array
+        items:
+          $ref: '#/definitions/functionality'
+    required:
+      - store
+
+  globalEligibilityInput:
+    type: object
+    properties:
+      store:
+        $ref: '#/definitions/store'
+      country:
+        type: string
+        description: Country code
+      customer:
+        $ref: '#/definitions/customer'
+      vehicle:
+        $ref: '#/definitions/vehicle'
+      bundles:
+        type: array
+        items:
+          $ref: '#/definitions/bundle'
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/product'
+      functionalities:
+        type: array
+        items:
+          $ref: '#/definitions/functionality'
+      offers:
+        type: array
+        items:
+          $ref: '#/definitions/offer'
+    required:
+      - store
+    additionalProperties: false
+    
+  evaluationStack:
+    type: object
+    properties:
+      condition:
+        type: string
+        description: single condition that has been evaluated ("__PSAFeatureCodeAssessment" in case of technical eligibility)
+        example: "($.customer.countryofresidence === 'FR')"
+      result:
+        type: boolean
+        example: true
+    required:
+      - condition
+      - result
+    additionalProperties: false
+
+  eligibilityResultDetails:
+    type: array
+    description: Details of the conditions that has been evaluated in order to assess the product, service functionality or offer
+    items:
+      type: object
+      properties:
+        rule:
+          type: string
+          description: "in normal case, this is a rule tag, but for technical eligiblity it will be special a value: __AssessMUSE"
+        shortLabel:
+          type: string
+          description: "in case of technical eligiblity, this property refers to resolved PSA feature code label, otherwise it will be not returned"
+        result:
+          type: boolean
+          description: the overall result of the evaluation of conditions stack
+          example: true
+        stack:
+          type: array
+          items:
+            oneOf:
+              - $ref: '#/definitions/evaluationStack'
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Functionality not found'
+          required:
+            - message
+          additionalProperties: false
+      required:
+        - result
+        - stack
+      additionalProperties: false
+
+  genericEligibilityOuput:
+    type: object
+    properties:
+      code:
+        type: string
+        description: depending on the request level this is the id of the product (id), service functionality (code) or technical id of rate plan
+        example: 8adc8f99617598b80161b91c146e53d4
+      iseligible:
+        type: boolean
+        description: the result of assessment for the corresponding code
+        example: true
+      description:
+        description: Details of the conditions that has been evaluated in order to assess the current product
+        $ref: '#/definitions/eligibilityResultDetails'
+    additionalProperties: false
+    
+  technicalEligibilityOuput:
+    type: array
+    items:
+      type: object
+      properties:
+        code:
+          type: string
+          description: service functionality (code)
+          example: NAL01
+        iseligible:
+          type: boolean
+          description: the result of assessment for the corresponding code
+          example: true
+        description:
+          description: Details of the conditions that has been evaluated in order to assess the current product
+          $ref: '#/definitions/eligibilityResultDetails'
+      additionalProperties: false
+
+
+  globalEligibilityOutputBundle:
+    description: result object when the level is AssessBundles (the workflow can be either global, commercial or technical).
+    type: object
+    properties:
+      code:
+        type: string
+        description: the id of the bundle (id), product (id) or service functionality (code) depending on the request level
+        example: 8adc8f99617598b80161b91c146e53d4
+      iseligible:
+        type: boolean
+        description: the result of assessment for the corresponding code
+        example: true
+      products:
+        description: List of assessed products. This property is present only in case of a bundle assessment (level)
+        type: array
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+              description: the id of product in the bundle
+              example: 8adc8f99617598b80161992e83461332
+            iseligible:
+              type: boolean
+              description: the assessment result for the current commerical service (part of the bundle)
+            description:
+              description: Details of the conditions that has been evaluated in order to assess the current product
+              $ref: '#/definitions/eligibilityResultDetails'
+            functionalities:
+              description: List of assessed service functionalities
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: the id of the current service functionality included in the product
+                  example: NAL01
+                iseligible:
+                  type: boolean
+                  description: the assessment result for the current service functionality (part of the product)
+                description:
+                  description: Details of the conditions that has been evaluated in order to assess the current service functionality
+                  $ref: '#/definitions/eligibilityResultDetails'
+              additionalProperties: false
+          additionalProperties: false
+    additionalProperties: false
+
+  globalEligibilityOutputProducts:
+    description: result object when the level is AssessProducts(the workflow can be either global, commercial or technical).
+    type: array
+    items:
+      type: object
+      properties:
+        code:
+          type: string
+          description: the id of the current product assessed
+          example: 8adc8f99617598b80161992e83461332
+        iseligible:
+          type: boolean
+          description: the assessment result for the current commerical service
+        description:
+          description: Details of the conditions that has been evaluated in order to assess the current product
+          $ref: '#/definitions/eligibilityResultDetails'
+        functionalities:
+          description: List of assessed service functionalities
+          type: object
+          properties:
+            code:
+              type: string
+              description: the id of the current service functionality included in the product
+              example: NAL01
+            iseligible:
+              type: boolean
+              description: the assessment result for the current service functionality (part of the product)
+            description:
+              description: Details of the conditions that has been evaluated in order to assess the current service functionality
+              $ref: '#/definitions/eligibilityResultDetails'
+      additionalProperties: false
+
+  globalEligibilityOutputFunctionalities:
+    description: result object when the level is AssessFunctionalities (the workflow should be technical).
+    type: array
+    items:
+      type: object
+      properties:
+        code:
+          type: string
+          description: the id of the current service functionality included in the product
+          example: NAL01
+        iseligible:
+          type: boolean
+          description: the assessment result for the current service functionality (part of the product)
+        description:
+          description: Details of the conditions that has been evaluated in order to assess the current service functionality
+          $ref: '#/definitions/eligibilityResultDetails'
+      additionalProperties: false
+
+  globalEligibilityOutputOffers:
+    description: result object when the level is AssessOffers (the workflow should be commercial).
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          description: the technical id of the particular rate plan
+        iseligible:
+          type: boolean
+          description: the assessment result for the offer
+        description:
+          description: Details of the conditions that has been evaluated in order to assess the particular offer
+          $ref: '#/definitions/eligibilityResultDetails'
+      additionalProperties: false
+
+externalDocs:
+  description: Find out more about SAMS eligibility component
+  url: >-
+    https://git.gekko.fr/psa-sams-poc/wiki/tree/master/04-ARCHITECTURE/C-ELIGIBILITY

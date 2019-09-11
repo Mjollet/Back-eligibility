@@ -1,0 +1,96 @@
+service: sams-eligibility-public
+
+custom:
+  default:
+    stage: "develop"
+    env: "{{env}}"
+    region: "{{ec2_region}}"
+    logLevel:
+      develop: INFO
+      production: INFO
+  table:
+    dictionary: Dictionary
+    rules: Rules
+  bucket:
+    schemas:
+      eligibility: "{{env}}-schemas-eligibility"
+  customDomain:
+    domainName: "{{dns_api}}"
+    basePath: ""
+    stage: ${self:provider.stage}
+    certificateArn: "{{certArn}}"
+    createRoute53Record: false
+  warmup:
+    default: true #set the default configuration for all the functions
+    folderName: "_warmup" # Name of the folder created for the generated warmup
+    cleanFolder: false
+    memorySize: 128
+    name: "{{env}}-make-public-eligibility-pop"
+    role: "arn:aws:iam::{{aws_account_id}}:role/{{env}}-role-lambda"
+    schedule: "cron(0/10 0-23 ? * MON-SUN *)" # Run WarmUP every 10 minutes Mon-Sun between 00:00am and 23:55pm (UTC)
+    timeout: 20
+    prewarm: true # Run WarmUp immediately after a deployment
+    vpc:
+      securityGroupIds: [{{sggroup_list_id}}]
+      subnetIds: [{{subnet_list_id}}]
+  resourcePolicy:
+    - Effect: Allow
+      Principal: "*"
+      Action: execute-api:Invoke
+      Resource:
+        - execute-api:*
+      Condition:
+        StringEquals:
+          aws:sourceVpc: "{{vpcid}}"
+
+package:
+    individually: true
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  role: "arn:aws:iam::{{aws_account_id}}:role/{{env}}-role-lambda"
+  stage: ${opt:stage, self:custom.default.stage}
+  region: ${self:custom.default.region}
+  environment:
+    SERVICE_NAME: ${self:service}
+    STAGE: ${opt:stage, self:custom.default.stage}
+    REGION: ${self:custom.default.region}
+    AWS_ENV: "{{env}}"
+    # DYNAMODB
+    AWS_DYNAMODB_REGION: ${self:custom.default.region}
+    AWS_DYNAMODB_ENDPOINT: ${opt:dynamodbEndpoint, "dynamodb.eu-west-1.amazonaws.com"}
+    DICTIONARY_TABLE_NAME: "{{env}}-${self:custom.table.dictionary}"
+    RULES_TABLE_NAME: "{{env}}-${self:custom.table.rules}"
+    # TAGS
+    AWS_ELIGIBILITY_TAG: "{{env}}/eligibility/eligibility"
+    AWS_MUSE_TAG: "{{env}}/eligibility/muse"
+    # SECRETS MANAGER
+    SECRET_MANAGER_ENDPOINT: "https://secretsmanager.${self:custom.default.region}.amazonaws.com"
+    S3_ELIGIBILITY_SCHEMA_BUCKET_NAME: ${self:custom.bucket.schemas.eligibility}
+
+
+plugins:
+  - serverless-offline
+  - serverless-domain-manager
+  - serverless-plugin-warmup
+  - serverless-dotenv-plugin
+  - serverless-plugin-optimize
+
+functions:
+  getAllRules:
+    handler: services/get-all-rules.handler
+    vpc:
+      securityGroupIds: [{{sggroup_list_id}}]
+      subnetIds: [{{subnet_list_id}}]
+    events:
+      - http:
+          path: /rule/all
+          method: get
+          cors: true
+          authorizer:
+            arn: "arn:aws:lambda:eu-west-1:{{aws_account_id}}:function:sams-cognito-authorizer-${opt:stage, self:custom.default.stage}-authorize"
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+            identityValidationExpression: ".*"
+            type: request

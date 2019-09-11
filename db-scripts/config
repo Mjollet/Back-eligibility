@@ -1,0 +1,52 @@
+module.exports.schemas = [{
+  TableName: 'localhost-Dictionary',
+  KeySchema: [{
+    AttributeName: 'label',
+    KeyType: 'HASH'
+  },
+  {
+    AttributeName: 'category',
+    KeyType: 'RANGE'
+  }
+  ],
+  AttributeDefinitions: [
+    {
+      AttributeName: 'label',
+      AttributeType: 'S'
+    },
+    {
+      AttributeName: 'category',
+      AttributeType: 'S'
+    }
+  ],
+  ProvisionedThroughput: {
+    ReadCapacityUnits: 100,
+    WriteCapacityUnits: 5
+  }
+},
+{
+  TableName: 'localhost-Rules',
+  KeySchema: [{
+    AttributeName: 'ruleTag',
+    KeyType: 'HASH'
+  },
+  {
+    AttributeName: 'type',
+    KeyType: 'RANGE'
+  }
+  ],
+  AttributeDefinitions: [
+    {
+      AttributeName: 'ruleTag',
+      AttributeType: 'S'
+    },
+    {
+      AttributeName: 'type',
+      AttributeType: 'S'
+    }
+  ],
+  ProvisionedThroughput: {
+    ReadCapacityUnits: 50,
+    WriteCapacityUnits: 5
+  }
+}]

@@ -1,0 +1,12 @@
+{
+    "$id": "tech-eligibility.schema.json",
+    "properties": {
+        "vehicle": {
+            "$ref": "vehicle.schema.json#/definitions/vehicle"
+        }
+    },
+    "required": [
+      "vehicle"
+    ],
+    "additionalProperties": true
+  }

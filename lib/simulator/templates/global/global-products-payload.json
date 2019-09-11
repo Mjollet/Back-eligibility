@@ -1,0 +1,27 @@
+{
+  "vehicle": {
+    "wmi": "VR1",
+    "vds": "JJEHZR",
+    "vis": "JY062548",
+    "brand": "DS",
+    "range": "DS 7"
+  },
+  "store": {
+    "language": "FR",
+    "level": "info",
+    "origin": "DS",
+    "audience": "B2C"
+  },
+  "customer": {
+    "uuid": "testCustomerID",
+    "countryofresidence": "FR"
+  },
+  "products": [{
+    "SKU": "SKU-00000002-FR-DS-B2C",
+    "ruleTag": "RESIDENCE_FR",
+    "id": "testProductID",
+    "functionalities": [{
+      "PSAFeatureCode": "NAL01"
+    }]
+  }]
+}

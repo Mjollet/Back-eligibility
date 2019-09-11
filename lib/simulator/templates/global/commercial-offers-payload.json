@@ -1,0 +1,20 @@
+{
+  "store": {
+    "language": "FR",
+    "level": "info",
+    "origin": "DS",
+    "audience": "B2C"
+  },
+  "customer": {
+    "uuid": "testCustomerID",
+    "countryofresidence": "FR"
+  },
+  "offers": [{
+      "id": "RATE_PLAN_ID_1"
+    },
+    {
+      "id": "RATE_PLAN_ID_2",
+      "ruleTag": "RESIDENCE_GB"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$id": "offer.schema.json",
+  "definitions": {
+    "offer": {
+      "type": "object",
+      "title": "Describes the offer",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "the technical id of the rate plan"
+        },
+        "ruleTag": {
+          "type": ["string", "null"],
+          "description": "the rule identifier"
+        }
+      },
+      "required":[
+        "id"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

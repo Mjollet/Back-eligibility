@@ -1,0 +1,38 @@
+{
+  "$id": "bundle.schema.json",
+  "definitions": {
+    "bundle": {
+      "type": "object",
+      "title": "bundle of one or several services",
+      "properties": {
+        "ruleTag": {
+          "type": ["string", "null"],
+          "title": "the rule identifier"
+        },
+        "id": {
+          "type": "string",
+          "title": "the bundle code"
+        },
+        "SKU": {
+          "type": "string",
+          "title": "the functional id of the service"
+        },
+        "products": {
+          "type": "array",
+          "title": "list of commercial services included in the bundle",
+          "items": {
+            "$ref": "product.schema.json#/definitions/product"
+          }
+        }
+
+      },
+      "required": [
+        "ruleTag",
+        "id",
+        "SKU",
+        "products"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

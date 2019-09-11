@@ -1,0 +1,42 @@
+{
+  "commercial": {
+    "AssessProducts": {
+      "empty-context": {},
+      "products-not-array": {
+        "vehicle": {
+          "wmi": "AEFAG",
+          "vds": "azra",
+          "vis": "ra21aze"
+        },
+        "customer": {
+          "id": "testCustomerID",
+          "countryofresidence": "FR"
+        },
+        "products": {
+          "SKU": "SKU-00000002-FR-DS-B2C",
+          "ruleTag": "customer_from_france",
+          "id": "A",
+          "functionalities": [{
+            "PSAFeatureCode": "GPS"
+          }]
+        }
+      }
+
+    }
+  },
+  "technical": {
+    "AssessFunctionalities": {
+      "missing-vin": {
+        "context": {
+          "language": "FR",
+          "level": "info",
+          "origin": "ds",
+          "audience": "B2B"
+        },
+        "serviceFeatures": [
+          "NAVCO"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$id": "subscriptions.schema.json",
+  "definitions": {
+    "subscriptions": {
+      "type": "object",
+      "properties": {
+        "VIN": {
+          "type": "string",
+          "pattern": "^\\w{17}$"
+        },
+        "subscriptionStatus": {
+          "type": "string"
+        },
+        "subscriptionStartDate": {
+          "type": "string"
+        },
+        "subscriptionEndDate": {
+          "type": "string"
+        },
+        "remainingDays": {
+          "type": "string"
+        },
+        "idSubscription": {
+          "type": "string"
+        },
+        "idRatePlan": {
+          "type": "string"
+        },
+        "idProduct": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "VIN",
+        "subscriptionStatus",
+        "subscriptionStartDate",
+        "subscriptionEndDate",
+        "remainingDays",
+        "idSubscription",
+        "idRatePlan",
+        "idProduct"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

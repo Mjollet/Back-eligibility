@@ -1,0 +1,29 @@
+{
+  "$id": "vin-with-service-features.schema.json",
+  "required": [
+    "vin",
+    "serviceFeatures"
+  ],
+  "properties": {
+    "vin": {
+      "type": "string",
+      "title": "Vehicle Identification Number - Number used to identify a vehicle"
+    },
+    "serviceFeatures": {
+      "type": "array",
+      "title": "Service Features - These services will be assessed for the technical eligibility",
+      "items": {
+        "type": "string",
+        "examples": [
+          "NAVCO",
+          "KEYMO"
+        ]
+      }
+    },
+    "client_id": {
+      "type": "string",
+      "title": "The client ID"
+    }
+  },
+  "additionalProperties": false
+}

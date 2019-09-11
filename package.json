@@ -1,0 +1,93 @@
+{
+  "name": "sams-eligibility",
+  "version": "1.20.3",
+  "description": "eligiblity component for SAMS ",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8.10.0",
+    "npm": ">=5.6.0"
+  },
+  "scripts": {
+    "offline": "serverless offline --stage localhost --dynamodbEndpoint http://localhost:8000 start",
+    "dynamodb": "node ./db-scripts/dynamo-db-seed.js",
+    "test": "LOGS_DISABLED=true jest --setupFiles dotenv/config --coverage",
+    "test:api": "LOG_LEVEL=WARN jest --setupFiles dotenv/config tests/api",
+    "test:unit": "LOG_LEVEL=WARN jest --setupFiles dotenv/config tests/unit",
+    "test:watch": "LOG_LEVEL=WARN jest --setupFiles dotenv/config --watch",
+    "precommit": "standard",
+    "prepush": "npm run test",
+    "gcz": "git-cz",
+    "release": "standard-version",
+    "docs:build": "documentation build index.js -f html -o docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gekkoteam/sams_eligibility.git"
+  },
+  "keywords": [
+    "eligiblity",
+    "sams",
+    "rules",
+    "lambda"
+  ],
+  "author": "@souf",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/D4UDigitalPlatform/sams-eligibility/issues"
+  },
+  "homepage": "https://github.com/gekkoteam/sams_eligibility#readme",
+  "dependencies": {
+    "ajv": "^6.7.0",
+    "async": "^2.6.0",
+    "aws-sdk": "^2.478.0",
+    "aws-xray-sdk": "^2.3.3",
+    "notevil": "^1.1.0",
+    "request": "^2.83.0",
+    "sams-js-submodules": "git+ssh://git@github.com/D4UDigitalPlatform/sams-js-submodules.git#semver:^1.2",
+    "xml-js": "^1.6.9",
+    "zlib": "^1.0.5"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^4.3.0",
+    "commitizen": "^3.1.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "documentation": "^9.1.1",
+    "husky": "^0.14.3",
+    "jest": "^22.2.1",
+    "jest-cli": "^23.6.0",
+    "jest-junit": "^3.5.0",
+    "lambda-wrapper": "^0.2.2",
+    "serverless-domain-manager": "^2.6.11",
+    "serverless-dotenv-plugin": "^2.0.1",
+    "serverless-jest-plugin": "^0.2.1",
+    "serverless-offline": "^3.33.0",
+    "serverless-plugin-optimize": "^4.1.0-rc.1",
+    "serverless-plugin-scripts": "^1.0.2",
+    "serverless-plugin-warmup": "^4.2.0-rc.1",
+    "sinon": "^7.2.5",
+    "standard": "^10.0.3",
+    "standard-version": "^4.4.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "standard": {
+    "ignore": [
+      "design/",
+      "docs/"
+    ]
+  },
+  "jest": {
+    "collectCoverage": false,
+    "coverageReporters": [
+      "json",
+      "html"
+    ],
+    "verbose": true,
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "testResultsProcessor": "jest-junit",
+    "testEnvironment": "node"
+  }
+}

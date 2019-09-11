@@ -1,0 +1,22 @@
+{
+  "vehicle": {
+   "wmi": "VR1",
+   "vds": "J45GGR",
+   "vis": "JY062430"
+  },
+  "store": {
+    "language": "FR",
+    "level": "info",
+    "origin": "DS",
+    "audience": "B2C"
+  },
+  "customer": {
+    "uuid": "testCustomerID"
+  },
+  "functionalities": [{
+    "PSAFeatureCode": "NAL01"
+  },
+  {
+  	"PSAFeatureCode": "NAX01"
+  }]
+}

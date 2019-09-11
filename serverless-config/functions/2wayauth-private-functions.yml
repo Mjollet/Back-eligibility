@@ -1,0 +1,162 @@
+technicalEligibility2Way:
+  handler: services/technical-eligibility.handler
+  events:
+    - http:
+        path: /2way/eligibility/technical/AssessMuse
+        method: post
+        cors: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+globalEligibility2Way:
+  handler: services/orchestrate.handler
+  timeout: 20
+  events:
+    - http:
+        path: /2way/global/eligibility/{workflow}/{level}
+        method: post
+        cors: true
+        request:
+          parameters:
+            paths:
+              workflow: true
+              level: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+eligibility2Way:
+  handler: services/eligibility.handler
+  events:
+    - http:
+        path: /2way/eligibility/{type}/{level}
+        method: post
+        request:
+          parameters:
+            paths:
+              type: true
+              level: true
+        cors: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+addRules2Way:
+  handler: services/add-rules.handler
+  events:
+    - http:
+        path: /2way/rule/{type}/add
+        method: post
+        cors: true
+        request:
+          parameters:
+            paths:
+              type: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+getAllRules2Way:
+  handler: services/get-all-rules.handler
+  events:
+    - http:
+        path: /2way/rule/all
+        method: get
+        cors: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+getRules2Way:
+  handler: services/get-rules.handler
+  events:
+    - http:
+        path: /2way/rule/{type}/all
+        method: get
+        cors: true
+        request:
+          parameters:
+            paths:
+              type: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+dropRule2Way:
+  handler: services/drop-rule.handler
+  events:
+    - http:
+        path: /2way/rule/{type}/drop
+        method: post
+        cors: true
+        request:
+          parameters:
+            paths:
+              type: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+addDefinitions2Way:
+  handler: services/add-definitions.handler
+  events:
+    - http:
+        path: /2way/dictionary/entry/add
+        method: post
+        cors: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+getDefinitions2Way:
+  handler: services/get-definitions.handler
+  events:
+    - http:
+        path: /2way/dictionary/entry/all
+        method: get
+        cors: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request
+
+dropDefinition2Way:
+  handler: services/drop-definition.handler
+  events:
+    - http:
+        path: /2way/dictionary/entry/drop
+        method: post
+        cors: true
+        authorizer:
+          arn: arn:aws:lambda:eu-west-1:${self:provider.aws_account_id}:function:sams-cognito-authorizer-${self:provider.stage}-authorize
+          resultTtlInSeconds: 0
+          identitySource: method.request.header.Authorization, method.request.header.X-CLIENT-SSL-CN
+          identityValidationExpression: ".*"
+          type: request

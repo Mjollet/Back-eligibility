@@ -1,0 +1,42 @@
+{
+  "$id": "condition.schema.json",
+  "definitions": {
+    "condition": {
+      "type": "object",
+      "title": "condition schema",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "The label of the parameter"
+        },
+        "operator": {
+          "type": "string",
+          "title": "The operator",
+          "enum": ["===", "<", ">", "!==", ">=", "<=", "includes", "excludes", "contains", "not_contains"]
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "string",
+              "title": "The value"
+            },
+            {
+              "type": "object",
+              "title": "The value"
+            },
+            {
+              "type": "array",
+              "title": "The value"
+            }
+          ]
+        }
+      },
+      "required": [
+        "label",
+        "operator",
+        "value"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

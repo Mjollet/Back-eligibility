@@ -1,0 +1,36 @@
+{
+  "$id": "generic-eligibility.schema.json",
+  "type": "object",
+  "properties": {
+    "store": {
+      "$ref": "store.schema.json#/definitions/store"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country code"
+    },
+    "vehicle": {
+      "$ref": "vehicle.schema.json#/definitions/vehicle"
+    },
+    "customer": {
+      "$ref": "customer.schema.json#/definitions/customer"
+    },
+    "products": {
+      "type": "array",
+      "items": {
+         "$ref": "product.schema.json#/definitions/product"
+      }
+    },
+    "functionality": {
+      "$ref": "functionality.schema.json#/definitions/functionality"
+    },
+    "offers": {
+      "type": "array",
+      "items": {
+        "$ref": "offer.schema.json#/definitions/offer"
+      }
+    }
+  },
+  "required": [],
+  "additionalProperties": true
+}

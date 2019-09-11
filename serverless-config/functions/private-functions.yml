@@ -1,0 +1,34 @@
+technicalEligibility:
+  handler: services/technical-eligibility.handler
+  events:
+    - http:
+        path: /eligibility/technical/AssessMuse
+        method: post
+        cors: true
+
+globalEligibility:
+  handler: services/orchestrate.handler
+  timeout: 20
+  events:
+    - http:
+        path: /global/eligibility/{workflow}/{level}
+        method: post
+        cors: true
+        request:
+          parameters:
+            paths:
+              workflow: true
+              level: true
+
+eligibility:
+  handler: services/eligibility.handler
+  events:
+    - http:
+        path: /eligibility/{type}/{level}
+        method: post
+        cors: true
+        request:
+          parameters:
+            paths:
+              type: true
+              level: true

@@ -1,0 +1,19 @@
+{
+  "vehicle": {
+    "wmi": "VR1",
+    "vds": "JCYHZJ",
+    "vis": "HY155744"
+  },
+  "store": {
+    "language": "FR",
+    "level": "info",
+    "origin": "DS",
+    "audience": "B2C"
+  },
+  "customer": {
+    "uuid": "testCustomerID"
+  },
+  "functionality": {
+    "PSAFeatureCode": "NAL01"
+  }
+}

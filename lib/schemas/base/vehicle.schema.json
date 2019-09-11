@@ -1,0 +1,44 @@
+{
+  "$id": "vehicle.schema.json",
+  "definitions": {
+    "vehicle": {
+      "type": "object",
+      "title": "Describes the vehicle",
+      "properties": {
+        "wmi": {
+          "type": "string",
+          "description": "World Manufacturer Identifier Number (WMI) Uniquely identify the manufacturer of the vehicle - Digits 1-3 of the VIN"
+        },
+        "vds": {
+          "type": "string",
+          "description": "Vehicle Descriptor Section (VDS)-Identify the vehicle type and may include information on the platform used, the model, and the body style -Digits 4-9 digits of the VIN"
+        },
+        "vis": {
+          "type": "string",
+          "description": "Vehicle Indicator Section (VIS) used by the manufacturer to identify the individual vehicle -Digits 10-17 digits of the VIN"
+        },
+        "brand": {
+          "type": "string",
+          "description": "Brand of the vehicle (DS/PEUGEOT/CITROEN/OPELVAUXHALL"
+        },
+        "range": {
+          "type": "string",
+          "description": "The family range of the vehicle"
+        },
+        "vehicleAge": {
+          "type": "integer",
+          "description": "Age of the vehicle in days"
+        },
+        "subscribedProducts": {
+          "$ref": "subscribedProducts.schema.json#/definitions/subscribedProducts"
+        }
+      },
+      "required":[
+        "wmi",
+        "vds",
+        "vis"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

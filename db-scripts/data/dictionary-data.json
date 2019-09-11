@@ -1,0 +1,163 @@
+[{
+    "category": "commercial",
+    "symbol": "$.customer.id",
+    "label": "Customers's id",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.offer.country",
+    "label": "Offer country",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.customer.countryofresidence",
+    "label": "Customer's country of residence",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.store.channel",
+    "label": "Communication Channel",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.vehicle.brand",
+    "label": "Vehicle Brand",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.vehicle.lcdv6",
+    "label": "Vehicle lcdv6",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.vehicle.vds",
+    "label": "Vehicle Descriptor Section (VDS)",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.vehicle.wmi",
+    "label": "World Manufacturer Identifier Number (WMI)",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.vehicle.vis",
+    "label": "Vehicle Indicator Section (VIS)",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.vehicle.range",
+    "label": "Vehicle Range",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "symbol": "$.vehicle.vehicleAge",
+    "label": "Vehicle age in days. (DDG + x)",
+    "type": "string"
+  },
+  {
+    "category": "commercial",
+    "attributes": [
+      "VIN",
+      "subscriptionStatus",
+      "subscriptionStartDate",
+      "subscriptionEndDate",
+      "remainingDays",
+      "idSubscription",
+      "idRatePlan",
+      "idProduct"
+    ],
+    "symbol": "$.customer.subscribedProducts.activatedSubscriptions",
+    "label": "Customer's activated subscriptions",
+    "type": "objectArray"
+  },
+  {
+    "category": "commercial",
+    "attributes": [
+      "VIN",
+      "subscriptionStatus",
+      "subscriptionStartDate",
+      "subscriptionEndDate",
+      "remainingDays",
+      "idSubscription",
+      "idRatePlan",
+      "idProduct"
+    ],
+    "symbol": "$.vehicle.subscribedProducts.activatedSubscriptions",
+    "label": "Vehicle's activated subscriptions",
+    "type": "objectArray"
+  },
+  {
+    "category": "commercial",
+    "attributes": [
+      "VIN",
+      "subscriptionStatus",
+      "subscriptionStartDate",
+      "subscriptionEndDate",
+      "remainingDays",
+      "idSubscription",
+      "idRatePlan",
+      "idProduct"
+    ],
+    "symbol": "$.customer.subscribedProducts.pendingSubscriptions",
+    "label": "Customer's pending subscriptions",
+    "type": "objectArray"
+  },
+  {
+    "category": "commercial",
+    "attributes": [
+      "VIN",
+      "subscriptionStatus",
+      "subscriptionStartDate",
+      "subscriptionEndDate",
+      "remainingDays",
+      "idSubscription",
+      "idRatePlan",
+      "idProduct"
+    ],
+    "symbol": "$.vehicle.subscribedProducts.pendingSubscriptions",
+    "label": "Vehicle's pending subscriptions",
+    "type": "objectArray"
+  },
+  {
+    "category": "commercial",
+    "attributes": [
+      "VIN",
+      "subscriptionStatus",
+      "subscriptionStartDate",
+      "subscriptionEndDate",
+      "remainingDays",
+      "idSubscription",
+      "idRatePlan",
+      "idProduct"
+    ],
+    "symbol": "$.customer.subscribedProducts.historicalSubscriptions",
+    "label": "Customer's historical subscriptions",
+    "type": "objectArray"
+  },
+  {
+    "category": "commercial",
+    "attributes": [
+      "VIN",
+      "subscriptionStatus",
+      "subscriptionStartDate",
+      "subscriptionEndDate",
+      "remainingDays",
+      "idSubscription",
+      "idRatePlan",
+      "idProduct"
+    ],
+    "symbol": "$.vehicle.subscribedProducts.historicalSubscriptions",
+    "label": "Vehicle's historical subscriptions",
+    "type": "objectArray"
+  }
+]

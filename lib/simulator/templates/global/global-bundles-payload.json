@@ -1,0 +1,82 @@
+{
+  "store": {
+    "location": "GB",
+    "origin": "DS",
+    "audience": "B2C",
+    "channel": "WEB",
+    "eligibilitysequence": "ALL"
+  },
+  "vehicle": {
+    "wmi": "VR1",
+    "vds": "J45GGR",
+    "vis": "JY062430",
+    "brand": "DS",
+    "range": "DS 7"
+  },
+  "customer": {
+    "uuid": "testCustomerID",
+    "language": "en_US",
+    "mktsegment": "premium",
+    "countryofresidence": "FR",
+    "subscribedProducts": {
+      "historicalSubscriptions": [{
+        "VIN": "VR1J45GGRJY062431",
+        "subscriptionStatus": "ended",
+        "subscriptionStartDate": "2018-06-29",
+        "subscriptionEndDate": "2018-06-30",
+        "remainingDays": "0",
+        "idSubscription": "1adc8f99617598b801618f508c19092e",
+        "idProduct": "8adc8f99617598b801618f508c19092d",
+        "idRatePlan": "8adc8f996140772e016146b853322c8c"
+      }],
+      "activatedSubscriptions": [{
+        "VIN": "VR1J45GGRJY062430",
+        "subscriptionStatus": "active",
+        "subscriptionStartDate": "2018-07-01",
+        "subscriptionEndDate": "2018-07-02",
+        "remainingDays": "1",
+        "idSubscription": "1adc8f99617598b801618f508c19092f",
+        "idProduct": "8adc8f99617598b801618f508c19092d",
+        "idRatePlan": "8adc8f996140772e016146b853322c8c"
+      }],
+      "pendingSubscriptions": [{
+        "VIN": "VR1J45GGRJY062430",
+        "subscriptionStatus": "pending",
+        "subscriptionStartDate": "2018-12-01",
+        "subscriptionEndDate": "2019-12-02",
+        "remainingDays": "365",
+        "idSubscription": "1adc8f99617598b801618f508c19092g",
+        "idProduct": "8adc8f99617598b801618f508c19092d",
+        "idRatePlan": "8adc8f996140772e016146b853322c8c"
+      }]
+    }
+  },
+  "bundles": [{
+    "ruleTag": "product_available_only_in_fr",
+    "SKU": "SKU-00000030-GB-DS-B2C",
+    "id": "8adce421648e62ea0164944b10f06b49",
+    "products": [{
+        "ruleTag": "product_available_only_in_fr",
+        "SKU": "SKU-00000003-GB-DS-B2C",
+        "id": "8adc8f99648e57e401649442993c7d3b",
+        "functionalities": [{
+          "name": "Zones à risque en connexion",
+          "PSAFeatureCode": "NAL01"
+        }]
+      },
+      {
+        "ruleTag": "product_available_only_in_fr",
+        "SKU": "SKU-00000002-GB-DS-B2C",
+        "id": "8adc8f99648e57e4016494464e487f13",
+        "functionalities": [{
+            "name": "Navigation Connectée Base",
+            "PSAFeatureCode": "NAL01"
+          },
+          {
+            "PSAFeatureCode": "NAX01"
+          }
+        ]
+      }
+    ]
+  }]
+}

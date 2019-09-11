@@ -1,0 +1,24 @@
+{
+  "rules": [
+    {
+      "ruleTag": "commercial_service_rule",
+      "conditions": {
+        "conditions": [{
+            "value": "ds",
+            "operator": "===",
+            "label": "TEST_BRAND_SITE"
+          },
+          {
+            "value": "FR",
+            "operator": "===",
+            "label": "TEST_LANG"
+          }
+        ],
+        "operator": "&&"
+      },
+      "status": "public",
+      "type": "commercial",
+      "overall": true
+    }
+  ]
+}

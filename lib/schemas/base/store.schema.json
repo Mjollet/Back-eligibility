@@ -1,0 +1,51 @@
+{
+  "$id": "store.schema.json",
+  "definitions": {
+    "store": {
+      "title": "User store",
+      "description": "User store",
+      "type": "object",
+      "properties": {
+
+        "channel": {
+          "$id": "/properties/context/channel",
+          "title": "communication channel : Mobile App, Web App ...",
+          "description": "User's language",
+          "type": "string"
+        },
+
+        "location": {
+          "$id": "/properties/context/location",
+          "title": "the country of residence",
+          "type": "string"
+        },
+
+        "level": {
+          "$id": "/properties/context/level",
+          "title": "Response level",
+          "description": "Response level",
+          "type": "string",
+          "enum": ["info", "debug"],
+          "default": "info"
+        },
+
+        "origin": {
+          "$id": "/properties/context/origin",
+          "title": "The brand of the web site",
+          "description": " Identify the BRAND of the site (map to the orchestration sequence). Allows to forbid request for a brand from an other Brand Site - Requestion a Peugeot from a DS Site",
+          "type": "string",
+          "enum": ["DS", "AP", "AC", "OV"]
+        },
+
+        "audience": {
+          "$id": "/properties/context/audience",
+          "title": "B2B or B2C",
+          "type": "string",
+          "enum": ["B2B", "B2C"]
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    }
+  }
+}

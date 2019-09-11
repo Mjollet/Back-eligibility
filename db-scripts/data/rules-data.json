@@ -1,0 +1,1125 @@
+[
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "subscriptionStatus": "active",
+            "idProduct": "8adc8f9966c8c79b0166f3c59d01260d"
+          },
+          "operator": "includes",
+          "label": "Vehicle's activated subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "_cat_Product_Included_In_Subscription",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "FR",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "SER_ZAR",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "IT",
+          "operator": "===",
+          "label": "Offer country"
+        },
+        {
+          "value": "IT",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "_cat_OFFERS_FOR_ITALIANS",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": [
+            "LCDV6",
+            "1SX8SU",
+            "1CE3A5",
+            "1CE3AD",
+            "1PR8A5",
+            "1PR8C5",
+            "1PK9AF",
+            "1PK9CL",
+            "1PK9K0",
+            "1PK9K1",
+            "2PK91A",
+            "2PK91C",
+            "2PK95C",
+            "2PK9SL",
+            "1CK9AF",
+            "1CK9CL",
+            "1CK9K0",
+            "1CK9K1",
+            "2CK91A",
+            "2CK91C",
+            "2CK95C",
+            "2CK9SL",
+            "1CYAA3",
+            "1CYAB3",
+            "1CCESY",
+            "1SD3SY",
+            "1PP2A5",
+            "1PP2AD"
+          ],
+          "operator": "contains",
+          "label": "Vehicle lcdv6"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "Vehicle_has_allowed_lcdv6_value",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "FR",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "RESIDENCE_FR",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "M",
+          "operator": "===",
+          "label": "Vehicle lcdv6"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "unik",
+    "status": "draft",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": [
+            "1SX8SU",
+            "1CE3A5",
+            "1CE3AD",
+            "1PR8A5",
+            "1PR8C5",
+            "1PK9AF",
+            "1PK9CL",
+            "1PK9K0",
+            "1PK9K1",
+            "2PK91A",
+            "2PK91C",
+            "2PK95C",
+            "2PK9SL",
+            "1CK9AF",
+            "1CK9CL",
+            "1CK9K0",
+            "1CK9K1",
+            "2CK91A",
+            "2CK91C",
+            "2CK95C",
+            "2CK9SL",
+            "1CYAA3",
+            "1CYAB3",
+            "1CCESY",
+            "1SD3SY",
+            "1PP2A5",
+            "1PP2AD"
+          ],
+          "operator": "contains",
+          "label": "Vehicle lcdv6"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "N_BY_LCDV6",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": false,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "idProduct": "8adce42165f1dff30165f2198e971586"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165acfe200165af0206947ab5"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abb5670661a8"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abb61baf6cad"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abc2f55e6852"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abb46efc6a98"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165f1dff30165f2149d681338"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc3c6c3715b"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc4c79e72a1"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "NAVCO_ALREADY_SUBSCRIBED_HISTORY",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": ["FR", "XX", "YY"],
+          "operator": "contains",
+          "label": "Customer's country of residence"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "Contains_Countries",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "FR",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "offer_available_only_in_fr",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "idProduct": "8adce42165acfe200165aee438150572"
+          },
+          "operator": "excludes",
+          "label": "Customer's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abb80d1b6355"
+          },
+          "operator": "excludes",
+          "label": "Customer's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abd2496d76c5"
+          },
+          "operator": "excludes",
+          "label": "Customer's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165acfe200165aee438150572"
+          },
+          "operator": "excludes",
+          "label": "Customer's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abb80d1b6355"
+          },
+          "operator": "excludes",
+          "label": "Customer's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abd2496d76c5"
+          },
+          "operator": "excludes",
+          "label": "Customer's pending subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "ZAR_NOT_SUBSCRIBED",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "idProduct": "8adce42165acfe200165aee438150572"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abb80d1b6355"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abd2496d76c5"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165acfe200165aee438150572"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abb80d1b6355"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abd2496d76c5"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "V_ZAR_NOT_SUBSCRIBED",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "FR",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "product_available_only_in_fr",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": ["DS", "XX", "YY"],
+          "operator": "not_contains",
+          "label": "Vehicle Brand"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "Not_Contains_Brands",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "FR",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        },
+        {
+          "value": {
+            "subscriptionEndDate": "2018-12-31"
+          },
+          "operator": "includes",
+          "label": "Customer's activated subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "End_Year_Subscription",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "FR",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        },
+        {
+          "value": {
+            "subscriptionEndDate": "2018-12-31"
+          },
+          "operator": "includes",
+          "label": "Vehicle's activated subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "V_End_Year_Subscription",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "ES",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "RESIDENCE_ES",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "idProduct": "8adce42165f1dff30165f2198e971586"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165acfe200165af0206947ab5"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abb5670661a8"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abb61baf6cad"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abc2f55e6852"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abb46efc6a98"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165f1dff30165f2149d681338"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc3c6c3715b"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc4c79e72a1"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's historical subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "NAVCO_NEVER_SUBSCRIBED_HISTORY",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": ["FR", "GB"],
+          "operator": "contains",
+          "label": "Offer country"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "_cat_Offers_In_FR_or_GB_only",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "GB",
+          "operator": "===",
+          "label": "Customer's country of residence"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "RESIDENCE_GB",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": [
+            "LCDV6",
+            "1SX8SU",
+            "1CE3A5",
+            "1CE3AD",
+            "1PR8A5",
+            "1PR8C5",
+            "1PK9AF",
+            "1PK9CL",
+            "1PK9K0",
+            "1PK9K1",
+            "2PK91A",
+            "2PK91C",
+            "2PK95C",
+            "2PK9SL",
+            "1CK9AF",
+            "1CK9CL",
+            "1CK9K0",
+            "1CK9K1",
+            "2CK91A",
+            "2CK91C",
+            "2CK95C",
+            "2CK9SL",
+            "1CYAA3",
+            "1CYAB3",
+            "1CCESY",
+            "1SD3SY",
+            "1PP2A5",
+            "1PP2AD"
+          ],
+          "operator": "contains",
+          "label": "Vehicle lsdv6"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "Vehicle_has_allowed_lsdv6_value",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abbb51706ee9"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abc131f567c7"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc1da7470d4"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abbb51706ee9"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abc131f567c7"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc1da7470d4"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "TMTS_NOT_SUBSCRIBED",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "7",
+          "operator": ">",
+          "label": "Vehicle age in days. (DDG + x)"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "VEHICLE_AGE_7",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "idProduct": "8adce42165f1dff30165f2198e971586"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165acfe200165af0206947ab5"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abb5670661a8"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abb61baf6cad"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abc2f55e6852"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abb46efc6a98"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165f1dff30165f2149d681338"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc3c6c3715b"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc4c79e72a1"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's activated subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165f1dff30165f2198e971586"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165acfe200165af0206947ab5"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abb5670661a8"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abb61baf6cad"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42166aa3d070166abc2f55e6852"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abb46efc6a98"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adce42165f1dff30165f2149d681338"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc3c6c3715b"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8adc8f9966aa36df0166abc4c79e72a1"
+          },
+          "operator": "excludes",
+          "label": "Vehicle's pending subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "NAVCO_NOT_SUBSCRIBED",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "subscriptionStatus": "active",
+            "idProduct": "8adc8f9966c8c79b0166f3c59d01260d"
+          },
+          "operator": "includes",
+          "label": "Customer's activated subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "PRODUCT_INCLUDED_IN_SUBSCRIPTION",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "366",
+          "operator": ">",
+          "label": "Vehicle age in days. (DDG + x)"
+        },
+        {
+          "conditions": [
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd8f81304"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            },
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd90e1306"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            },
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd91f1308"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            },
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd92f130a"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            },
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd943130c"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            },
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd9691310"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            },
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd97c1312"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            },
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd99f1316"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            },
+            {
+              "value": {
+                "idProduct": "8a28f1aa66fdca480167085bd9b11318"
+              },
+              "operator": "includes",
+              "label": "Customer's historical subscriptions"
+            }
+          ],
+          "operator": "||"
+        }
+      ],
+      "operator": "||"
+    },
+    "ruleTag": "NAVCO_ALREADY_SUB_OR_V_AGE>1Y",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "1",
+          "operator": ">",
+          "label": "Vehicle age in days. (DDG + x)"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "VEHICLE_AGE",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": "366",
+          "operator": "<",
+          "label": "Vehicle age in days. (DDG + x)"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "V_AGE<1Y",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": true,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd8f81304"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd90e1306"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd91f1308"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd92f130a"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd943130c"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd9691310"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd97c1312"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd99f1316"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd9b11318"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "NAVCO_NEVER_SUBSCRIBED",
+    "status": "public",
+    "type": "commercial"
+  },
+  {
+    "overall": false,
+    "conditions": {
+      "conditions": [
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd8f81304"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd90e1306"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd91f1308"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd92f130a"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd943130c"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd9691310"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd97c1312"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd99f1316"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        },
+        {
+          "value": {
+            "idProduct": "8a28f1aa66fdca480167085bd9b11318"
+          },
+          "operator": "excludes",
+          "label": "Customer's historical subscriptions"
+        }
+      ],
+      "operator": "&&"
+    },
+    "ruleTag": "NAVCO_ALREADY_SUBSCRIBED",
+    "status": "public",
+    "type": "commercial"
+  }
+]

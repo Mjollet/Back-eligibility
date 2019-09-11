@@ -1,0 +1,23 @@
+{
+  "$id": "functionality.schema.json",
+  "definitions": {
+    "functionality": {
+      "type": "object",
+      "title": "Functionality of a service. e.g GPS ...",
+      "properties": {
+        "PSAFeatureCode": {
+          "type": "string",
+          "title": "the functionality's id"
+        },
+        "name": {
+          "type": "string",
+          "title": "the functionality's name"
+        }
+      },
+      "required": [
+        "PSAFeatureCode"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

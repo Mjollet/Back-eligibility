@@ -1,0 +1,27 @@
+{
+	"vehicle": {
+		"wmi": "AEFAG",
+		"vds": "azra",
+		"vis": "ra21aze"
+	},
+	"store": {
+		"language": "FR",
+		"level": "info",
+		"origin": "DS",
+		"audience": "B2C"
+	},
+	"customer": {
+		"uuid": "testCustomerID",
+		"countryofresidence": "FR"
+	},
+	"products": [{
+		"SKU": "SKU-00000002-FR-DS-B2C",
+		"ruleTag": "commercial_service_rule",
+		"id": "testProductID",
+		"functionalities": [
+			{
+				"PSAFeatureCode": "GPS"
+			}
+		]
+	}]
+}

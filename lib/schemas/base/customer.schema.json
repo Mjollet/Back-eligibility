@@ -1,0 +1,34 @@
+{
+  "$id": "customer.schema.json",
+  "definitions": {
+    "customer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "CRM 18char id"
+        },
+        "cAtId": {
+          "type": "string",
+          "title": "the customer @ id"
+        },
+        "countryofresidence":{
+          "type": "string",
+          "title": "The customer's country of residence "
+        },
+        "mktsegment": {
+          "type": "string",
+          "title": "Marketing Segment"
+        },
+        "language": {
+          "type": "string",
+          "title": "Language of the customer"
+        },
+        "subscribedProducts": {
+          "$ref": "subscribedProducts.schema.json#/definitions/subscribedProducts"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

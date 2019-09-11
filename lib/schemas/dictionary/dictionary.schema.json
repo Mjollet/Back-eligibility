@@ -1,0 +1,60 @@
+{
+  "$id": "dictionary.schema.json",
+  "definitions": {
+    "entry": {
+      "type": "object",
+      "title": "dictionary entry",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "the parameter's label"
+        },
+        "symbol": {
+          "type": "string",
+          "title": "json path or logical operator"
+        },
+        "type": {
+          "type": "string",
+          "title": "type of the property",
+          "enum": [
+            "string",
+            "object",
+            "array",
+            "objectArray"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "title": "the category of entry corresponding to the eligibility type"
+        },
+        "attributes": {
+          "type": "array",
+          "title": "Attributes for object array"
+        }
+      },
+      "if": {
+        "properties": {
+          "type": {
+            "enum": ["objectArray", "object"]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "label",
+          "symbol",
+          "type",
+          "category",
+          "attributes"
+        ]
+      },
+      "required": [
+        "label",
+        "symbol",
+        "type",
+        "category"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

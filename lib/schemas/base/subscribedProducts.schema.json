@@ -1,0 +1,34 @@
+{
+  "$id": "subscribedProducts.schema.json",
+  "definitions": {
+    "subscribedProducts": {
+      "type": "object",
+      "properties": {
+        "historicalSubscriptions" : {
+          "type": "array",
+          "items": {
+            "$ref": "subscriptions.schema.json#/definitions/subscriptions"
+          }
+        },
+        "activatedSubscriptions" : {
+          "type": "array",
+          "items": {
+            "$ref": "subscriptions.schema.json#/definitions/subscriptions"
+          }
+        },
+        "pendingSubscriptions" : {
+          "type": "array",
+          "items": {
+            "$ref": "subscriptions.schema.json#/definitions/subscriptions"
+          }
+        }
+      },
+      "required": [
+        "historicalSubscriptions",
+        "activatedSubscriptions",
+        "pendingSubscriptions"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

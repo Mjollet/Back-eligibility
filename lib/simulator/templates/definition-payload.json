@@ -1,0 +1,27 @@
+{
+  "definitions": [{
+      "label": "USER_TEST_LABEL",
+      "symbol": "$.customer.uuid",
+      "type": "string",
+      "category": "commercial"
+    },
+    {
+      "label": "V_TEST_WMI",
+      "symbol": "$.vehicle.wmi",
+      "type": "string",
+      "category": "commercial"
+    },
+    {
+      "label": "TEST_BRAND_SITE",
+      "symbol": "$.context.brand",
+      "type": "string",
+      "category": "commercial"
+    },
+    {
+      "label": "TEST_LANG",
+      "symbol": "$.context.location",
+      "type": "string",
+      "category": "commercial"
+    }
+  ]
+}
